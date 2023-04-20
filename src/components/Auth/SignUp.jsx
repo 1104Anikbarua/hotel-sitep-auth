@@ -1,11 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { RoomContext } from './AuthProvider';
 import { HiEye, HiEyeSlash } from 'react-icons/hi2'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [show, setShow] = useState(false)
     const [error, setError] = useState('');
     const { createUser, userName } = useContext(RoomContext);
+    const location = useLocation()
+    const navigate = useNavigate()
+    let from = location.state?.from?.pathname || '/'
 
     const handleSignUp = (event) => {
         event.preventDefault();
@@ -29,6 +33,7 @@ const SignUp = () => {
                     .catch(() => {
                         console.log('An error occured')
                     })
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = error.code;

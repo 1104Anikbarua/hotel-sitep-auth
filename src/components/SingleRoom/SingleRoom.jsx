@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const SingleRoom = (props) => {
     const { room } = props;
-    console.log(room)
+    // console.log(room)
     return (
         <div className='w-full max-w-sm bg-white shadow-md px-10 py-5'>
             <p className='text-xl'>{room?.name}</p>

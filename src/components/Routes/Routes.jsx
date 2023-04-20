@@ -5,6 +5,7 @@ import Login from "../Auth/Login";
 import SignUp from "../Auth/SignUp";
 import Rooms from "../Rooms/Rooms";
 import BookRoom from "../BookRoom/BookRoom";
+import RequireAuth from "../RequireAuth/RequireAuth";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/:id',
-                element: <BookRoom></BookRoom>
+                element: <RequireAuth>
+                    <BookRoom></BookRoom>
+                </RequireAuth>
             }
 
 

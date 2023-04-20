@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../../../assets/hotellogo.jpg';
 import { Link } from 'react-router-dom';
 import { HiBars3, HiXMark } from 'react-icons/hi2'
+import { RoomContext } from '../../Auth/AuthProvider';
 const Header = () => {
     const [show, setShow] = useState(false);
+    const { user, logOutUser } = useContext(RoomContext)
 
+
+
+    const handleLogOut = () => {
+        logOutUser()
+            .then(() => {
+                console.log('user successfully logout')
+            })
+            .catch(() => {
+                console.log('An error Occured')
+            })
+    }
     return (
         <div className={`flex items-center justify-between bg-white shadow-md fixed top-0 right-0 left-0 h-20`}>
             <div>
@@ -15,18 +28,30 @@ const Header = () => {
                 <li className='mr-5'>
                     <Link className='text-xl font-medium text-blue-500' to={'/'}>Home</Link>
                 </li>
-                <li className='mr-5'>
-                    <Link className='text-xl font-medium text-blue-500' to={'/about'}>About</Link>
-                </li>
+
                 <li className='mr-5'>
                     <Link className='text-xl font-medium text-blue-500' to={'/rooms'}>Rooms</Link>
                 </li>
-                <li className='mr-5'>
-                    <Link className='text-xl font-medium text-blue-500' to={'/login'}>Login</Link>
-                </li>
-                <li className='mr-5'>
-                    <Link className='text-xl font-medium text-blue-500' to={'/register'}>SignUp</Link>
-                </li>
+
+
+                {
+                    user
+                        ?
+                        <li className='mr-5'>
+                            <Link onClick={() => handleLogOut()} className='text-xl font-medium text-blue-500' to={'/login'}>Logout</Link>
+                        </li>
+                        :
+                        <li className='mr-5'>
+                            <Link className='text-xl font-medium text-blue-500' to={'/login'}>Login</Link>
+                        </li>
+                }
+                {
+                    !user
+                    &&
+                    <li className='mr-5'>
+                        <Link className='text-xl font-medium text-blue-500' to={'/register'}>SignUp</Link>
+                    </li>
+                }
 
             </ul>
 

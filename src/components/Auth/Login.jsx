@@ -1,29 +1,40 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { RoomContext } from './AuthProvider';
 import { HiEye, HiEyeSlash } from 'react-icons/hi2';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [show, setShow] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const { signInUser } = useContext(RoomContext);
+    const { user, signInUser } = useContext(RoomContext);
 
     const handleLogin = (event) => {
-
+        event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
 
         signInUser(email, password)
             .then((result) => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
+                // navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = error.code;
                 console.log(errorMessage)
             })
-
+        event.target.reset();
     }
 
+    let from = location.state?.from?.pathname || '/';
+
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true })
+        }
+    }, [user, navigate, from])
 
     return (
         <div className='mt-20 bg-white shadow-lg w-[500px] max-w-xl mx-auto h-[100vh] flex items-center justify-center'>
