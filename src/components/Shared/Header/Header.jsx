@@ -38,6 +38,7 @@ const Header = () => {
                     user
                         ?
                         <li className='mr-5'>
+                            {user.displayName}
                             <Link onClick={() => handleLogOut()} className='text-xl font-medium text-blue-500' to={'/login'}>Logout</Link>
                         </li>
                         :

@@ -9,6 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const { user, signInUser } = useContext(RoomContext);
+    let from = location.state?.from?.pathname || '/';
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -19,7 +20,7 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 // console.log(user)
-                // navigate(from, { replace: true })
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = error.code;
@@ -28,13 +29,13 @@ const Login = () => {
         event.target.reset();
     }
 
-    let from = location.state?.from?.pathname || '/';
+    // let from = location.state?.from?.pathname || '/';
 
-    useEffect(() => {
-        if (user) {
-            navigate(from, { replace: true })
-        }
-    }, [user, navigate, from])
+    // useEffect(() => {
+    //     if (user) {
+    //         navigate(from, { replace: true })
+    //     }
+    // }, [user, navigate, from])
 
     return (
         <div className='mt-20 bg-white shadow-lg w-[500px] max-w-xl mx-auto h-[100vh] flex items-center justify-center'>
