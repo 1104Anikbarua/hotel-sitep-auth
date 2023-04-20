@@ -11,7 +11,7 @@ const Rooms = () => {
 
     return (
         <div className='mt-20'>
-            <div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     hotelRoom.map((room) => <SingleRoom
                         room={room}

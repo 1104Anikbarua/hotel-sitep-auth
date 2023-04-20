@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <div className='h-[calc(100vh-49px)]'>
+            <div className='h-[calc(100vh-70px)]'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
