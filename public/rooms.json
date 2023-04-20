@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "bed": "1",
+        "stay": "1",
+        "price": "119",
+        "name": "Single Room",
+        "Desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio aspernatur molestiae adipisci exercitationem rem enim aut, iure veniam sapiente dolorum recusandae aliquam ratione itaque vel. Cumque impedit numquam ad accusantium iusto maiores harum eum exercitationem officiis dolores delectus perspiciatis deleniti mollitia unde, quam consequuntur corporis optio perferendis explicabo qui commodi?",
+        "img": ""
+    },
+    {
+        "id": "2",
+        "bed": "1",
+        "stay": "2",
+        "price": "149"
+    },
+    {
+        "id": "3",
+        "bed": "2",
+        "stay": "4",
+        "price": "199"
+    }
+]
